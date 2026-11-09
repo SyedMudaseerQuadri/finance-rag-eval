@@ -35,5 +35,9 @@ def test_ask_mocked():
 
 
 def test_ask_validation():
+    # mock the retriever so the test never needs the downloaded corpus
+    app.dependency_overrides[get_state] = lambda: {
+        "retriever": FakeRet(), "llm": fake_llm, "setup": "dense"}
     c = TestClient(app)
     assert c.post("/ask", json={"question": "", "k": 5}).status_code == 422
+    app.dependency_overrides.clear()
