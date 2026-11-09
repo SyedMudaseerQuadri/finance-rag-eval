@@ -1,0 +1,958 @@
+{
+  "retriever": "dense",
+  "generator_model": "qwen2.5:3b",
+  "judge_model": "qwen3.5:4b",
+  "n_questions": 30,
+  "sample_seed": 0,
+  "top_k_passages": 5,
+  "rubric": "You are a strict fact-checking judge. You get source passages, a question and an answer.\nRate whether the ANSWER is faithful to the PASSAGES only (ignore whether it is true in the real world, and ignore style).\n- supported: every factual claim in the answer is backed by the passages.\n- partially: some claims are backed, but others are not found in the passages or are stretched beyond them.\n- unsupported: the main claims are not backed by the passages, or the answer contradicts them.\nIf the answer only says it cannot answer from the passages, rate it supported.\nReply with JSON only: {\"verdict\": \"supported|partially|unsupported\", \"reason\": \"<one sentence>\"}",
+  "caveat": "Judge is a small local 4B model: a noisy proxy for faithfulness. No human labels, no inter-judge agreement measured. Treat as a smoke test, not a benchmark.",
+  "verdict_counts": {
+    "unsupported": 10,
+    "partially": 8,
+    "supported": 12
+  },
+  "verdict_rates": {
+    "unsupported": 0.3333333333333333,
+    "partially": 0.26666666666666666,
+    "supported": 0.4
+  },
+  "citation_validity": {
+    "answers_with_all_citations_valid": 28,
+    "answers_uncited": 0,
+    "answers_with_invalid_citation_ids": 2
+  },
+  "answers_where_a_gold_passage_was_in_top5": 18,
+  "items": [
+    {
+      "qid": "6041",
+      "question": "Most effective Fundamental Analysis indicators for market entry",
+      "answer": "[81655] Fundamental Analysis can be used to help you determine what to buy, but they won't give you an entry signal for when to buy. Technical Analysis can be used to help you determine when to buy, and can give you entry signals for when to buy. There are many Technical Indicator which can be used as an entry signal, from as simple as the price crossing above a moving average line and then selling when the price crosses back below the moving average line, to as complicated as using a combination of indicators to all line up for an entry signal to be valid.",
+      "retrieved_ids": [
+        "81655",
+        "425020",
+        "367391",
+        "96910",
+        "224695"
+      ],
+      "citation_check": {
+        "cited": [
+          "81655"
+        ],
+        "valid": [
+          "81655"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer fails to provide any specific Fundamental Analysis indicators because the provided passages explicitly state that Fundamental Analysis does not offer entry signals."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "6679",
+      "question": "Specifically when do options expire?",
+      "answer": "[581672] Regular equity monthly options expire on the 3rd Friday of every month. [358492] Equity options expire the Saturday after the 3rd Friday of the month. [293605] E-mini S&P500 options expire on the 3rd Friday. [116436] Options expired on the 3rd Wednesday of Mar, Jun, Sep, Dec traditionally. [463254] Options expire when they expire, no specific date mentioned. [581672] Specific to monthly options, last trading time is 4 PM Eastern time on the 3rd Friday. [293605] E-mini S&P500 options expire on the 3rd Friday. Therefore, options can expire on the 3rd Friday or the Saturday after the 3rd Friday of the month.",
+      "retrieved_ids": [
+        "116436",
+        "358492",
+        "581672",
+        "293605",
+        "463254"
+      ],
+      "citation_check": {
+        "cited": [
+          "581672",
+          "358492",
+          "293605",
+          "116436",
+          "463254"
+        ],
+        "valid": [
+          "581672",
+          "358492",
+          "293605",
+          "116436",
+          "463254"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer is partially supported because it correctly cites specific expiration rules from the provided passages for different option types, but it includes a claim from passage [463254] that contradicts the other factual statements and offers no specific date."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "10975",
+      "question": "How to contribute to Roth IRA when income is at the maximum limit & you have employer-sponsored 401k plans?",
+      "answer": "[441632] [360533] When income is at the maximum limit and you have employer-sponsored 401k plans, you can contribute up to $53,000 including employer contributions. However, you can only contribute $5500 total across IRA and Roth IRA. Once you max out your 401k, you can contribute up to $5500 to Roth IRA. If you have a poor employer match, you can contribute more but it would go in as after tax dollars and not claim the tax deduction.",
+      "retrieved_ids": [
+        "441632",
+        "399543",
+        "290105",
+        "360533",
+        "480036"
+      ],
+      "citation_check": {
+        "cited": [
+          "441632",
+          "360533"
+        ],
+        "valid": [
+          "441632",
+          "360533"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer incorrectly states that one can contribute up to $53,000 to a Roth IRA when income is at the maximum limit, whereas the passages clarify that the total contribution limit for all IRAs combined is only $5,500 and that employer contributions do not count toward this specific limit."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "4465",
+      "question": "How to donate to charity that will make a difference?",
+      "answer": "[174033] [319458] [379353] [326167] [8060] To donate to charity that makes a difference, consider using services like CAF (Charities Aid Foundation) for anonymous donations with Gift Aid. Alternatively, use intermediary services like BT MyDonate or The Big Give. For cost-effectiveness, look into services like Give Well which provides median estimates of top charities' cost-effectiveness. Directly support causes you care about, like visiting charities personally. Donating to charities like Veterans Centers or Schools for the Blind can also make a direct impact.",
+      "retrieved_ids": [
+        "174033",
+        "319458",
+        "379353",
+        "326167",
+        "8060"
+      ],
+      "citation_check": {
+        "cited": [
+          "174033",
+          "319458",
+          "379353",
+          "326167",
+          "8060"
+        ],
+        "valid": [
+          "174033",
+          "319458",
+          "379353",
+          "326167",
+          "8060"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer incorrectly attributes the CAF/Gift Aid information to the US context while the passages only provide this detail for the UK."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "7801",
+      "question": "What are some well known or well regarded arguments against investing?",
+      "answer": "[427592] Well-regarded arguments against investing include priorities questioning if you might have something better to do than investing, and the parable of the rich man who thinks about building more barns to store his fruits, suggesting investing may not be the best use of excess cash.",
+      "retrieved_ids": [
+        "427592",
+        "541302",
+        "378161",
+        "232114",
+        "441603"
+      ],
+      "citation_check": {
+        "cited": [
+          "427592"
+        ],
+        "valid": [
+          "427592"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the content of passage [427592], which presents arguments against prioritizing investment over other uses of time and resources, including the parable of the rich man."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "7463",
+      "question": "Pros/cons of borrowing money using a mortgage loan and investing it in a low-fee index fund?",
+      "answer": "[206544] [364099] Borrowing money using a mortgage loan to invest in a low-fee index fund can be advantageous when the expected return from the investment is higher than the mortgage rate. For instance, if the mortgage rate is 5% and the expected return from stocks or other investments is greater than 5%, it might make sense to invest borrowed money. However, there are also risks involved, such as the obligation to make mortgage payments and the risk of the investment not yielding the expected returns. On the other hand, keeping the mortgage and investing the money can be more tax-efficient, especially if the investment results in long-term capital gains taxed at a lower rate. It's also safer to pay off the mortgage, which is more appropriate for risk-averse individuals. [88190] In a low-interest rate period, it's smart to use the money saved from lower mortgage rates to reinvest in property or other investments where you can get a better yield.",
+      "retrieved_ids": [
+        "107350",
+        "206544",
+        "255946",
+        "88190",
+        "364099"
+      ],
+      "citation_check": {
+        "cited": [
+          "206544",
+          "364099",
+          "88190"
+        ],
+        "valid": [
+          "206544",
+          "364099",
+          "88190"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately synthesizes the provided passages by citing specific conditions (return > mortgage rate, tax efficiency) and risks (payment obligations, investment risk) mentioned in the text."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "6441",
+      "question": "Trading with Settled / Unsettled Funds (T+3)",
+      "answer": "Trading with funds that are either settled or unsettled (T+3) depends on the type of account. In a cash account, funds are not available for trading until T+3, as stated in [176717]. However, in a margin account, funds are available immediately after trading, despite the T+3 rule, as mentioned in [293389]. Converting a cash account to a margin account allows immediate trading of unsettled funds, as explained in [327080].",
+      "retrieved_ids": [
+        "176717",
+        "293389",
+        "119161",
+        "109422",
+        "327080"
+      ],
+      "citation_check": {
+        "cited": [
+          "176717",
+          "293389",
+          "327080"
+        ],
+        "valid": [
+          "176717",
+          "293389",
+          "327080"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer is partially supported because while it correctly identifies that T+3 applies primarily to cash accounts and margin accounts allow immediate trading of unsettled funds, the specific claim in [176717] that funds are 'not available for trading' until T+3 contradicts the passage's explicit s"
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "504",
+      "question": "Have plenty of cash flow but bad credit",
+      "answer": "[393817] Having plenty of cash flow but bad credit can be challenging. While you have the liquidity, your bad credit history can still affect your ability to secure the credit or loan you need, especially in a market where cash buyers are preferred. [546097]",
+      "retrieved_ids": [
+        "546097",
+        "393817",
+        "556558",
+        "22807",
+        "569240"
+      ],
+      "citation_check": {
+        "cited": [
+          "393817",
+          "546097"
+        ],
+        "valid": [
+          "393817",
+          "546097"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer cites passage [393817], which discusses factors for building good credit but never mentions that having plenty of cash flow or bad credit makes securing a loan challenging."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "7344",
+      "question": "How is the Dow divisor calculated?",
+      "answer": "[14368] [378974] The Dow Divisor is adjusted in case of stock splits, spinoffs or similar structural changes to ensure the numerical value of the DJIA does not change. Its calculation is not detailed in the provided passages.",
+      "retrieved_ids": [
+        "14368",
+        "378974",
+        "159166",
+        "150430",
+        "65618"
+      ],
+      "citation_check": {
+        "cited": [
+          "14368",
+          "378974"
+        ],
+        "valid": [
+          "14368",
+          "378974"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer incorrectly claims that the calculation method for the Dow Divisor is not detailed in the passages, whereas Passage [14368] explicitly states that the divisor is calculated by ensuring the index value remains continuous before and after events using the formula DJIA = sum(p_old) / d_old ="
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "5653",
+      "question": "Steps and timing of the SEIS investment (in the UK)",
+      "answer": "[588247] For SEIS investment in the UK, you make the investment in Jan 2016. If the SEIS certificate is issued before 5th April 2016, you will enter the SEIS investment on your 2015-2016 tax return and claim the relief in that year. If the certificate is not issued in time, you will enter it in the 2016-2017 tax return and get the relief then.",
+      "retrieved_ids": [
+        "588247",
+        "33155",
+        "109796",
+        "11995",
+        "517935"
+      ],
+      "citation_check": {
+        "cited": [
+          "588247"
+        ],
+        "valid": [
+          "588247"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the specific conditions regarding SEIS investment timing and tax return entry dates as detailed in passage [588247]."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "9088",
+      "question": "Brokerage account for charity",
+      "answer": "[329849] [390089] [486557] A brokerage account for charity can be set up through various means. Options include pot accounts or jars offered by some banks, or CAF (Charitable Gift Fund) accounts. Brokerage accounts can also offer banking services directly within their brokerage accounts, as seen with TDAmeritrade.",
+      "retrieved_ids": [
+        "390089",
+        "475896",
+        "329849",
+        "167879",
+        "486557"
+      ],
+      "citation_check": {
+        "cited": [
+          "329849",
+          "390089",
+          "486557"
+        ],
+        "valid": [
+          "329849",
+          "390089",
+          "486557"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the information in the provided passages regarding pot/jar accounts, CAF accounts, and TDAmeritrade's specific banking services."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "3859",
+      "question": "Buying an investment property in Australia - what are the advantages and disadvantages of building a house vs buying an existing one?",
+      "answer": "[B189587] [B389179] Advantages of buying an existing property include tax breaks, the ability to redecorate, and the land value increase over time. Buying a house has financial risks but can also save money in the long run. Building a house has the risk of depreciation and the need to build equity, but can be cheaper in the short term.",
+      "retrieved_ids": [
+        "189587",
+        "4739",
+        "314163",
+        "389179",
+        "378616"
+      ],
+      "citation_check": {
+        "cited": [
+          "B189587",
+          "B389179"
+        ],
+        "valid": [],
+        "invalid": [
+          "B189587",
+          "B389179"
+        ],
+        "uncited": false,
+        "ok": false
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer contradicts Passage [189587] by claiming tax breaks are an advantage of buying existing property, whereas that passage explicitly states mortgage interest is tax deductible while rent is not."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "7702",
+      "question": "Bond ETFs vs actual bonds",
+      "answer": "[B137299] Bond ETFs are traded like normal stock and hold a mix of bonds. They can lose money as well as gain, not just when the issuer defaults but also due to market conditions. They are similar to traditional bond funds in terms of investment content but offer the flexibility of trading like stocks. [B5710] Bond funds, including ETFs, are lower risk and lower expected return than stock funds. They can be a hedge against equity market declines. [B387277] Bond ETFs are just a way to buy bond mutual funds, offering the same mix of bonds but with the flexibility of trading like stocks. [B138383] They have lower expense ratios compared to traditional mutual funds, making them potentially more cost-effective for long-term investors.",
+      "retrieved_ids": [
+        "287950",
+        "5710",
+        "137299",
+        "387277",
+        "138383"
+      ],
+      "citation_check": {
+        "cited": [
+          "B137299",
+          "B5710",
+          "B387277",
+          "B138383"
+        ],
+        "valid": [],
+        "invalid": [
+          "B137299",
+          "B5710",
+          "B387277",
+          "B138383"
+        ],
+        "uncited": false,
+        "ok": false
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer is partially supported because while it correctly cites passages regarding trading mechanics and risk profiles, the claim about lower expense ratios contradicts Passage [138383], which states that ETFs generally have the same or higher expense ratios than their mutual fund counterparts."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "2676",
+      "question": "Tax question about selling a car",
+      "answer": "[582922] [55666] When you sell a car, you may have received more or less than the value of the car (likely less). If you sold it for less, but to a friend or relative, then you might think you could claim a loss, but the tax collector would just claim that you had given them a gift, and attempt to collect the tax from them. Losses from the sale of personal-use automobiles are not deductible as capital losses. Expenses you incurred in owning and operating the car are not deductible either. If you used it partly for business, then some of your expenses might be deductible; see IRS Tax Topic 510.",
+      "retrieved_ids": [
+        "582922",
+        "55666",
+        "581380",
+        "460530",
+        "127004"
+      ],
+      "citation_check": {
+        "cited": [
+          "582922",
+          "55666"
+        ],
+        "valid": [
+          "582922",
+          "55666"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately synthesizes claims from the provided passages regarding tax treatment of selling personal-use cars, including rules about losses to relatives, non-deductibility of expenses, and business use exceptions."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "4785",
+      "question": "What is the difference between a structured collar and a normal collar in finance?",
+      "answer": "[37517] A structured collar is not explicitly defined in the given passages. However, based on the definition provided, a Collar is a protective strategy for a position in the underlying instrument created by purchasing a put and selling a call. A structured collar would imply a more complex or specific application of this strategy, likely involving additional layers or conditions not detailed in the simple Collar definition provided.",
+      "retrieved_ids": [
+        "37517",
+        "495715",
+        "6426",
+        "429652",
+        "229582"
+      ],
+      "citation_check": {
+        "cited": [
+          "37517"
+        ],
+        "valid": [
+          "37517"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer claims that a 'structured collar' is not explicitly defined in the passages and speculates on its complexity without any supporting evidence from the text."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "2685",
+      "question": "What ways are there for us to earn a little extra side money?",
+      "answer": "[382005] There are several ways to earn a little extra side money. One example is a home day care business, where a person can earn additional income by taking care of other children while managing their own. Another idea is to start a part-time property management business, which can be done alongside a regular job. [468086] Additionally, starting a small side business, like tutoring or consulting, can also be a way to earn extra income. [549359] Another suggestion is to work a part-time job outside of your career field, which can also provide additional income.",
+      "retrieved_ids": [
+        "382005",
+        "349319",
+        "543275",
+        "468086",
+        "549359"
+      ],
+      "citation_check": {
+        "cited": [
+          "382005",
+          "468086",
+          "549359"
+        ],
+        "valid": [
+          "382005",
+          "468086",
+          "549359"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer incorrectly attributes the examples of tutoring and consulting to passage [468086], whereas those specific examples are actually found in passage [549359]."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "2154",
+      "question": "What tax software automatically determines the best filing status, etc?",
+      "answer": "None of the provided passages mention any tax software automatically determining the best filing status or other features. [171856] [534454] [141511] [287398] [253735]",
+      "retrieved_ids": [
+        "171856",
+        "534454",
+        "141511",
+        "287398",
+        "253735"
+      ],
+      "citation_check": {
+        "cited": [
+          "171856",
+          "534454",
+          "141511",
+          "287398",
+          "253735"
+        ],
+        "valid": [
+          "171856",
+          "534454",
+          "141511",
+          "287398",
+          "253735"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer correctly states that none of the provided passages mention any tax software automatically determining the best filing status."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "9701",
+      "question": "How to bet against the London housing market?",
+      "answer": "[473883] To bet against the London housing market, one could consider short selling shares of the stock or buying put options. However, short selling an IPO might be problematic due to the difficulty in borrowing shares, and buying put options requires the stock to meet specific requirements for options trading.",
+      "retrieved_ids": [
+        "177261",
+        "473883",
+        "410404",
+        "91746",
+        "187806"
+      ],
+      "citation_check": {
+        "cited": [
+          "473883"
+        ],
+        "valid": [
+          "473883"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer incorrectly applies general stock market betting rules (short selling, put options) to the London housing market without any supporting evidence in the passages, which instead discuss spread betting and real estate bubbles."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "4339",
+      "question": "What could happen to Detroit Municipal bonds because of Detroit's filing for bankruptcy?",
+      "answer": "Detroit Municipal bonds could become worthless if the city is unable to pay on them due to bankruptcy [386531]. There's also a possibility that some bonds might get paid back with pennies on the dollar [386531]. However, there could also be a bailout that makes the bonds good, though this is unlikely at this point [386531].",
+      "retrieved_ids": [
+        "386531",
+        "488615",
+        "44474",
+        "316312",
+        "424166"
+      ],
+      "citation_check": {
+        "cited": [
+          "386531"
+        ],
+        "valid": [
+          "386531"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the three specific outcomes for Detroit bonds described in passage [386531]: becoming worthless, receiving pennies on the dollar, or potentially benefiting from a bailout."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "8116",
+      "question": "A-B-C Class Shares: What's the difference?",
+      "answer": "[251604] [236482] A-B-C class shares can have different voting rights and par values. For example, A shares have 100 voting rights per share with a par value of $0.01, while B shares have one voting right with a par value of $0.0002. Additionally, some classes may have different rights in case of liquidation or dividend payments. Berkshire Hathaway's B shares have 1/500th of the rights and 1/10,000th of the voting rights of an A share. Companies can issue multiple classes of shares with varying characteristics to cater to different investor preferences and to manage their capital structure. [138575] It's also important to note that the market typically values shares with voting rights more highly.",
+      "retrieved_ids": [
+        "251604",
+        "327560",
+        "433032",
+        "236482",
+        "138575"
+      ],
+      "citation_check": {
+        "cited": [
+          "251604",
+          "236482",
+          "138575"
+        ],
+        "valid": [
+          "251604",
+          "236482",
+          "138575"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer correctly cites specific data from passages [251604] and [236482] regarding BYD share classes but incorrectly attributes the 1/500th rights ratio to Berkshire Hathaway, which is a factual error as that company's ratios are described in passage [138575] as 1/1500."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "9391",
+      "question": "Should I replace bonds in a passive investment strategy",
+      "answer": "[535518] [248158] [536580] While bonds still have a place in passive investment strategies, they are not a guaranteed investment. Bonds can default, leading to potential loss of original investment. Passive strategies aim for a steady mix of assets without trying to predict market movements. However, the risk of default and the need to diversify into various assets like short-term government bonds and long-term government bonds (which have some risk) suggest that bonds should be part of a passive portfolio. Passive investors should also consider the risk of emotional decision-making, which can negatively impact long-term performance. Therefore, bonds should be included in a passive investment strategy, but their allocation should be carefully considered based on risk tolerance and market conditions.",
+      "retrieved_ids": [
+        "535518",
+        "136515",
+        "248158",
+        "283202",
+        "536580"
+      ],
+      "citation_check": {
+        "cited": [
+          "535518",
+          "248158",
+          "536580"
+        ],
+        "valid": [
+          "535518",
+          "248158",
+          "536580"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the claims in the provided passages regarding bond risks, the definition of passive strategies, and the role of diversification."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "2790",
+      "question": "Should I pay more than 20% down on a home?",
+      "answer": "[472484] [295688] [385343] While the passages do not explicitly state whether one should pay more than 20% down, they suggest that putting 20% or more down is generally recommended. This is because it avoids the need for Private Mortgage Insurance (PMI), increases equity, and makes it easier to avoid a short sale in the future. However, they also mention that having less than 20% down is acceptable for investment properties or if you plan to live in the property for at least a year. Therefore, whether to pay more than 20% down depends on the specific circumstances such as the type of property and your personal financial situation. [215103] recommends avoiding paying more than 20% down, suggesting that having more equity can provide flexibility in the future.",
+      "retrieved_ids": [
+        "472484",
+        "54827",
+        "215103",
+        "295688",
+        "385343"
+      ],
+      "citation_check": {
+        "cited": [
+          "472484",
+          "295688",
+          "385343",
+          "215103"
+        ],
+        "valid": [
+          "472484",
+          "295688",
+          "385343",
+          "215103"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer contradicts Passage [472484], which explicitly recommends against paying more than 20% down."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "5083",
+      "question": "Co-signer deceased",
+      "answer": "[270952] [305509] The passage [270952] describes a situation where the car was bought by the grandmother and the speaker was co-signing. The grandmother passed away, and the speaker is now the sole owner of the vehicle. The passage [305509] further explains that since the grandmother is deceased and not on the ownership of the car, and there was no agreement for the speaker to pay her, the speaker does not owe either her or her daughter any money. The finance company will want to know about the demise of the mother, but the daughter's credit is not affected. The speaker should approach the loan company to refinance in their name only.",
+      "retrieved_ids": [
+        "270952",
+        "305509",
+        "273759",
+        "361263",
+        "369075"
+      ],
+      "citation_check": {
+        "cited": [
+          "270952",
+          "305509"
+        ],
+        "valid": [
+          "270952",
+          "305509"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the specific details regarding ownership, co-signing liability, and refinancing options provided in passages [270952] and [305509]."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "2264",
+      "question": "Personal Tax Return software for Linux?",
+      "answer": "[534454] [144894] [141511] [470319] TurboTax online works via Firefox (i.e. it is a cloud-based service.) I don't think any downloaded software is available directly for Linux. Best Linux software is PostBooks. It is full double entry, but there is definitely a learning curve. For platform-agnostic, my favorite is Xero, which is web-based. It is full double entry balance sheet, the bank reconciliation is a pleasure to use, and they are coming out with a US version this summer. Easy to use and does everything I need. If you would like to use linux I suggest you to use KMyMoney http://kmymoney2.sourceforge.net/ It is based on gnucash but it is easier to use IMO. I second the vote for GnuCash. It runs on Linux, Windows, and Mac. It is double-entry accounting, so there is a little bit of a learning curve, but it sounds like you should probably have something a little more powerful than Mint for your situation. [141511] Largely it comes down to the complexity of your return (likely relatively simple if it's your first time filing) and your comfort level with using software. More complex returns would include filing business claims, handling stocks and investments, special return forms, etc. TurboTax, HR Block, and Tax Slayer, are free to use and you only pay when you're ready to file. They also allow you to take your time and save your progress, so you can start using it and go ask questions/do research on your own time. My opinion would be to use one of the online options because of cost and their ease of use. They also allow you to take your time and save your progress, so you can start using it and go ask questions/do research on your own time.",
+      "retrieved_ids": [
+        "534454",
+        "419245",
+        "144894",
+        "470319",
+        "141511"
+      ],
+      "citation_check": {
+        "cited": [
+          "534454",
+          "144894",
+          "141511",
+          "470319"
+        ],
+        "valid": [
+          "534454",
+          "144894",
+          "141511",
+          "470319"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "unsupported",
+        "reason": "The answer incorrectly claims that TurboTax, HR Block, and Tax Slayer are free to use based on a passage that states they are free to *try* but require payment when filing."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "1812",
+      "question": "splitting a joint mortgage - one owner in home",
+      "answer": "[112435] [349607] [214071] [280177] When splitting a joint mortgage, one owner in the home, it's important to have a legal agreement on how the money should be divided when selling the property. Ideally, the written agreement made before purchasing the house together dictates the division of assets. If no such agreement exists, a written agreement must be made with the partner before proceeding. In case of disagreement, a judge will split up the assets, making the lawyers the only winners. Joint ownership of the house means both names are on the deed, necessitating the second person's signature for selling the property. The lender will not allow the second person to claim 50% ownership and make things difficult for them. Therefore, deciding on a fair division of assets and ensuring both parties agree is crucial.",
+      "retrieved_ids": [
+        "112435",
+        "181608",
+        "349607",
+        "214071",
+        "280177"
+      ],
+      "citation_check": {
+        "cited": [
+          "112435",
+          "349607",
+          "214071",
+          "280177"
+        ],
+        "valid": [
+          "112435",
+          "349607",
+          "214071",
+          "280177"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer correctly cites passages regarding the importance of written agreements and potential court splits but incorrectly claims that lenders do not allow one party to claim 50% ownership, which contradicts Passage [280177] stating that a co-owner 'won't be able to claim 50% ownership' only if s"
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "529",
+      "question": "Sole proprietorship or LLC?",
+      "answer": "[220165] [151023] A sole proprietorship is simpler and doesn't require the complexities of an LLC. However, an LLC offers more flexibility in taxation and can protect personal assets, making it a better choice for larger or more complex businesses. [251392] provides specific conditions where an LLC might be more beneficial, such as needing to protect personal assets or dealing with high liability industries.",
+      "retrieved_ids": [
+        "220165",
+        "161020",
+        "552756",
+        "151023",
+        "251392"
+      ],
+      "citation_check": {
+        "cited": [
+          "220165",
+          "151023",
+          "251392"
+        ],
+        "valid": [
+          "220165",
+          "151023",
+          "251392"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer partially supports its claims by citing passages for asset protection and tax flexibility but fails to provide specific textual evidence from the provided passages regarding the conditions where an LLC is beneficial over a sole proprietorship."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "7279",
+      "question": "If I invest in securities denominated in a foreign currency, should I hedge my currency risk?",
+      "answer": "[81483] If you invest in securities denominated in a foreign currency, you should consider hedging your currency risk. However, whether to hedge or not depends on your view of the FX market and your sensitivity to losses. There are more cost-efficient ways to hedge through ETFs, which are currency-hedged versions of popular ETFs. These are hedged against a specific currency, such as USD for investments in USD.",
+      "retrieved_ids": [
+        "81483",
+        "476834",
+        "213373",
+        "518721",
+        "322456"
+      ],
+      "citation_check": {
+        "cited": [
+          "81483"
+        ],
+        "valid": [
+          "81483"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "partially",
+        "reason": "The answer correctly identifies that the decision to hedge depends on market views and loss sensitivity based on passage [476834], but it incorrectly claims ETFs are a 'more cost-efficient' way to hedge compared to futures, whereas passage [81483] explicitly states hedged ETFs have higher expense ra"
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "8635",
+      "question": "Is there any flaw in this investment scheme?",
+      "answer": "[575918] There are flaws in this investment scheme. While some gains can be true, they are often cornered by entities in the supply chain, leaving very little for investors. It is best to avoid such investments.",
+      "retrieved_ids": [
+        "575918",
+        "488364",
+        "182444",
+        "423229",
+        "16778"
+      ],
+      "citation_check": {
+        "cited": [
+          "575918"
+        ],
+        "valid": [
+          "575918"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer accurately reflects the claims made in passage [575918] regarding how gains are cornered by supply chain entities and the recommendation to avoid such investments."
+      },
+      "gold_in_top5": false
+    },
+    {
+      "qid": "2306",
+      "question": "To whom should I report fraud on both of my credit cards?",
+      "answer": "To report fraud on both credit cards, you should call the respective banks who issued the credit cards [581889]. Additionally, you can report it to the police and file a police report in the jurisdiction where the card was used [596284]. For identity theft, place a Fraud Alert with one of the three credit reporting companies and consider a credit freeze [581889].",
+      "retrieved_ids": [
+        "581889",
+        "531137",
+        "289464",
+        "538217",
+        "596284"
+      ],
+      "citation_check": {
+        "cited": [
+          "581889",
+          "596284"
+        ],
+        "valid": [
+          "581889",
+          "596284"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer is fully supported by the provided passages, which state that fraud should be reported to the issuing banks, police in the relevant jurisdiction, and for identity theft concerns, a fraud alert or credit freeze can be placed with credit reporting companies."
+      },
+      "gold_in_top5": true
+    },
+    {
+      "qid": "56",
+      "question": "Can a entrepreneur hire a self-employed business owner?",
+      "answer": "[181187] Yes, a business can hire a self-employed business owner. However, there are tax implications as this might be considered taking money out of the company. Regulations also play a role depending on the country.",
+      "retrieved_ids": [
+        "572690",
+        "156554",
+        "181187",
+        "384994",
+        "504056"
+      ],
+      "citation_check": {
+        "cited": [
+          "181187"
+        ],
+        "valid": [
+          "181187"
+        ],
+        "invalid": [],
+        "uncited": false,
+        "ok": true
+      },
+      "judge": {
+        "verdict": "supported",
+        "reason": "The answer is supported by passage [181187], which states that hiring a self-employed individual is possible and notes that tax implications and country-specific regulations are relevant factors."
+      },
+      "gold_in_top5": true
+    }
+  ]
+}

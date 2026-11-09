@@ -1,0 +1,56 @@
+{
+  "dataset": "BEIR FiQA-2018 test split",
+  "corpus_size": 57638,
+  "n_test_queries": 648,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "rrf_k": 60,
+  "rerank_pool": 100,
+  "hardware": {
+    "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "python": "3.12.15"
+  },
+  "latency_note": "per-query wall-clock incl. query encoding / reranking, after warm-up, single query at a time, shared GPU",
+  "results": {
+    "bm25": {
+      "ndcg@10": 0.2513896381321363,
+      "recall@10": 0.31779402439124665,
+      "recall@100": 0.5593334049352569,
+      "mrr@10": 0.30749987752302566,
+      "n_queries": 648,
+      "latency_ms_mean": 0.5274077160394859,
+      "latency_ms_median": 0.45284999987416086,
+      "latency_ms_p95": 0.9016000003612135
+    },
+    "dense": {
+      "ndcg@10": 0.391261788248632,
+      "recall@10": 0.4486895092219166,
+      "recall@100": 0.6829536076063853,
+      "mrr@10": 0.4763588820301783,
+      "n_queries": 648,
+      "latency_ms_mean": 19.863273611112344,
+      "latency_ms_median": 19.590249999964726,
+      "latency_ms_p95": 23.512599999776285
+    },
+    "hybrid_rrf": {
+      "ndcg@10": 0.3598805400384339,
+      "recall@10": 0.4317228296394963,
+      "recall@100": 0.6937321937321937,
+      "mrr@10": 0.4333498677248678,
+      "n_queries": 648,
+      "latency_ms_mean": 20.66468132718287,
+      "latency_ms_median": 20.45040000029985,
+      "latency_ms_p95": 24.150899999767717
+    },
+    "hybrid_rerank": {
+      "ndcg@10": 0.365660423919308,
+      "recall@10": 0.44042302005264966,
+      "recall@100": 0.6937321937321937,
+      "mrr@10": 0.43597271213011957,
+      "n_queries": 648,
+      "latency_ms_mean": 661.7615086419711,
+      "latency_ms_median": 666.8131500000527,
+      "latency_ms_p95": 733.217599999989
+    }
+  }
+}
